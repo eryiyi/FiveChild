@@ -74,8 +74,6 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         lists.add("");
         lists.add("");
         lists.add("");
-        lists.add("");
-        lists.add("");
         initViewPager();
         getAd();
         return view;
@@ -84,7 +82,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     void initView(View view){
         listindex.add(new IndexObj(R.drawable.index_icon_one, "校区信息"));
         listindex.add(new IndexObj(R.drawable.index_icon_two, "教师介绍"));
-        listindex.add(new IndexObj(R.drawable.index_icon_three, "活跃度"));
+//        listindex.add(new IndexObj(R.drawable.index_icon_three, "活跃度"));
         listindex.add(new IndexObj(R.drawable.index_icon_four, "查询"));
         listindex.add(new IndexObj(R.drawable.index_icon_five, "班级圈"));
         listindex.add(new IndexObj(R.drawable.index_icon_six, "费用支付"));
@@ -112,33 +110,33 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
                         startActivity(banjiquanV);
                     }
                         break;
+//                    case 2:
+//                    {
+//                        //活跃度
+//                    }
+//                    break;
                     case 2:
-                    {
-                        //活跃度
-                    }
-                    break;
-                    case 3:
                     {
                         //查询
                         Intent banjiquanV = new Intent(getActivity(), IndexSearchActivity.class);
                         startActivity(banjiquanV);
                     }
                     break;
-                    case 4:
+                    case 3:
                     {
                         //班级圈
                         Intent banjiquanV = new Intent(getActivity(), IndexPengyouquanActivity.class);
                         startActivity(banjiquanV);
                     }
                     break;
-                    case 5:
+                    case 4:
                     {
                         //费用支付
                         Intent banjiquanV = new Intent(getActivity(), IndexZhifuActivity.class);
                         startActivity(banjiquanV);
                     }
                     break;
-                    case 6:
+                    case 5:
                     {
                         //我的积分
                         Intent banjiquanV = new Intent(getActivity(), IndexJifenActivity.class);

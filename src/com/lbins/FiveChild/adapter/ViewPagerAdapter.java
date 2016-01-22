@@ -63,6 +63,17 @@ public class ViewPagerAdapter extends PagerAdapter {
         });
         String slidePic = mPaths.get(position);
 
+        switch (position){
+            case 0:
+                holder.iv.setImageResource(R.drawable.ad1);
+                break;
+            case 1:
+                holder.iv.setImageResource(R.drawable.ad2);
+                break;
+            case 2:
+                holder.iv.setImageResource(R.drawable.ad3);
+                break;
+        }
 //        imageLoader.displayImage((slidePic.getPic() == null ? "" : slidePic.getPic()), holder.iv, UniversityApplication.options, animateFirstListener);
         holder.iv.setOnClickListener(new View.OnClickListener() {
             @Override
