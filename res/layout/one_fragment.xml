@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@drawable/main_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/top_bg"
+                    android:layout_height="@dimen/height_top_bar">
+        <ImageView android:layout_width="45dp"
+                   android:src="@drawable/head"
+                   android:layout_centerVertical="true"
+                   android:padding="8dp"
+                   android:layout_height="45dp"/>
+        <ImageView android:layout_width="45dp"
+                   android:src="@drawable/duihao"
+                   android:padding="8dp"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:layout_height="45dp"/>
+        <TextView android:layout_width="wrap_content"
+                  android:paddingLeft="8dp"
+                  android:text="首页"
+                  android:textColor="@color/white"
+                  android:textSize="18sp"
+                  android:layout_centerInParent="true"
+                  android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+            <RelativeLayout android:layout_width="match_parent"
+                            android:id="@+id/lunbo"
+                            android:layout_height="wrap_content">
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" >
+                    <android.support.v4.view.ViewPager
+                            android:id="@+id/viewpager"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                    </android.support.v4.view.ViewPager>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentLeft="true"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="3dp" >
+
+                        <LinearLayout
+                                android:id="@+id/viewGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:orientation="horizontal"
+                                android:paddingBottom="1dp"
+                                android:paddingTop="1dp" >
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <GridView
+                android:id="@+id/grid_one"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="4"
+                >
+            </GridView>
+
+
+</LinearLayout>

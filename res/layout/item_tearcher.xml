@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@drawable/zhuye_item_select"
+              android:padding="6dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <com.lbins.FiveChild.widget.CircleImageView
+            android:src="@drawable/head"
+            android:layout_width="50dp"
+            android:id="@+id/head"
+            android:layout_height="50dp"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_toRightOf="@+id/head"
+              android:id="@+id/title"
+              android:text="成红（小二班）"
+              android:textSize="15sp"
+              android:textColor="@color/textColor"
+              android:layout_marginLeft="6dp"
+              android:layout_marginTop="6dp"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:text="资深教师"
+              android:textColor="@color/textColor"
+              android:textSize="13sp"
+              android:layout_alignParentRight="true"
+              android:layout_marginTop="8dp"
+              android:layout_marginRight="6dp"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:text="13034115805"
+              android:padding="8dp"
+              android:layout_below="@+id/head"
+              android:textColor="@color/textColor"
+              android:drawableLeft="@drawable/tel"
+              android:layout_height="wrap_content"/>
+</RelativeLayout>

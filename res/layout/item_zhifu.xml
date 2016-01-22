@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@drawable/zhuye_item_select"
+              android:padding="15dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView android:layout_width="wrap_content"
+              android:text="支付某某某费用"
+              android:id="@+id/title"
+              android:textColor="@color/textColor"
+              android:layout_height="wrap_content"/>
+    <TextView android:layout_width="wrap_content"
+              android:text="合计：1500.00"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/title"
+              android:id="@+id/heji"
+              android:textColor="@color/orange"
+              android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:text="在线支付"
+              android:padding="8dp"
+              android:textSize="13sp"
+              android:gravity="center"
+              android:layout_marginTop="6dp"
+              android:textColor="@color/white"
+              android:layout_below="@+id/heji"
+              android:background="@drawable/zhifu_ong_btn"
+              android:layout_alignParentRight="true"
+
+              android:layout_height="wrap_content"/>
+</RelativeLayout>

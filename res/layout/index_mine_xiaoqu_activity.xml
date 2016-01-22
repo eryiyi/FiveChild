@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@drawable/main_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/top_bg"
+                    android:layout_height="@dimen/height_top_bar">
+        <TextView android:layout_width="wrap_content"
+                  android:text="校区信息"
+                  android:drawablePadding="8dp"
+                  android:textSize="16sp"
+                  android:padding="6dp"
+                  android:onClick="back"
+                  android:drawableLeft="@drawable/back_white"
+                  android:textColor="@color/white"
+                  android:layout_centerVertical="true"
+                  android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent"
+                    android:id="@+id/lunbo"
+                    android:layout_height="wrap_content">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp" >
+            <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp" >
+
+                <LinearLayout
+                        android:id="@+id/viewGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="horizontal"
+                        android:paddingBottom="1dp"
+                        android:paddingTop="1dp" >
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.lbins.FiveChild.widget.ReboundScrollView android:layout_width="match_parent"
+                                                  android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_height="match_parent">
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:padding="8dp"
+                          android:layout_height="wrap_content">
+                <com.lbins.FiveChild.widget.CircleImageView
+                        android:layout_width="40dp"
+                        android:src="@drawable/head"
+                        android:layout_height="40dp"/>
+                <TextView android:layout_width="wrap_content"
+                          android:text="谢云（院长）"
+                          android:layout_marginLeft="8dp"
+                          android:layout_gravity="center_vertical"
+                          android:textColor="@color/textColor"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView android:layout_width="match_parent"
+                      android:drawableLeft="@drawable/xiaoqu_tel"
+                      android:padding="15dp"
+                      android:textColor="@color/textColor"
+                      android:text="13181038186"
+                      android:drawablePadding="8dp"
+                      android:background="@drawable/back_tel"
+                      android:layout_height="wrap_content"/>
+            <View android:layout_width="match_parent"
+                  android:background="@color/gray"
+                  android:layout_height="1dp"></View>
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:background="@drawable/back_tel"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_weight="1"
+                          android:drawableLeft="@drawable/xiaoqu_address"
+                          android:padding="15dp"
+                          android:textColor="@color/textColor"
+                          android:textSize="12sp"
+                          android:singleLine="true"
+                          android:text="河北省石家庄市获南路125号（武警医院对面）"
+                          android:drawablePadding="8dp"
+                          android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content"
+                          android:text="点击查看地图"
+                          android:textSize="12sp"
+                          android:layout_marginRight="8dp"
+                          android:textColor="@color/textColor"
+                          android:layout_gravity="center_vertical"
+                          android:gravity="center_vertical"
+                          android:drawableRight="@drawable/in_red"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="vertical"
+                          android:background="@drawable/xiaoqu_jianjie"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="match_parent"
+                          android:text="校区简介\n"
+                          android:textSize="14sp"
+                          android:textColor="@color/textColor"
+                          android:gravity="center"
+                          android:layout_height="wrap_content"/>
+                <TextView android:layout_width="match_parent"
+                          android:lineSpacingMultiplier="1.2"
+                          android:text="办园目标：把幼儿园办成有亲情的幼儿园\n办院原则：高起点建设、高标准要求\n办院理念：快乐学习、快乐成长、快乐生活\n"
+                          android:textSize="12sp"
+                          android:textColor="@color/textColor"
+                          android:gravity="center|left"
+                          android:padding="8dp"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.lbins.FiveChild.widget.ReboundScrollView>
+
+
+</LinearLayout>
