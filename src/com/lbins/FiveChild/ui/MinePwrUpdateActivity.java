@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import com.lbins.FiveChild.R;
-import com.lbins.FiveChild.adapter.SearchNewsAdapter;
 import com.lbins.FiveChild.adapter.ZhifuAdapter;
 import com.lbins.FiveChild.base.BaseActivity;
 
@@ -14,24 +13,13 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/1/22.
  */
-public class IndexZhifuActivity extends BaseActivity implements View.OnClickListener {
-    private ListView lstv;
+public class MinePwrUpdateActivity extends BaseActivity implements View.OnClickListener {
 
-    private List<String> lists = new ArrayList<String>();
-    ZhifuAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.index_zhifu_activity);
-        lstv = (ListView) this.findViewById(R.id.lstv);
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        adapter = new ZhifuAdapter(lists, IndexZhifuActivity.this);
-        lstv.setAdapter(adapter);
+        setContentView(R.layout.mine_pwr_update_activity);
+
 
         this.findViewById(R.id.back).setOnClickListener(this);
     }

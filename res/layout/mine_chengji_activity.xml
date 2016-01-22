@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@drawable/main_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/top_bg"
+                    android:layout_height="@dimen/height_top_bar">
+        <TextView android:layout_width="wrap_content"
+                  android:text="我的成绩"
+                  android:drawablePadding="8dp"
+                  android:textSize="16sp"
+                  android:padding="6dp"
+                android:id="@+id/back"
+                  android:drawableLeft="@drawable/back_white"
+                  android:textColor="@color/white"
+                  android:layout_centerVertical="true"
+                  android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:padding="15dp"
+                    android:background="@drawable/back_tel"
+                    android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:textSize="15sp"
+                  android:textColor="@color/textColor"
+                  android:layout_centerInParent="true"
+                  android:id="@+id/title"
+                  android:text="11月30日 - 12月06日"
+                  android:layout_height="wrap_content"/>
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_toLeftOf="@+id/title"
+                   android:layout_marginRight="15dp"
+                   android:src="@drawable/left_jiantou"
+                   android:layout_height="wrap_content"/>
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_toRightOf="@+id/title"
+                   android:layout_marginLeft="15dp"
+                   android:src="@drawable/right_jiantou"
+                   android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginRight="15dp"
+                  android:layout_height="wrap_content">
+        <ImageView android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"/>
+        <ImageView android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"/>
+        <ImageView android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:src="@drawable/huandongtiao"
+                   android:layout_height="wrap_content"/>
+        <ImageView android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"/>
+        <ImageView android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:padding="15dp"
+                    android:background="@drawable/back_tel"
+                    android:layout_height="wrap_content">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_below="@+id/shangwu"
+                  android:text="做游戏"
+                  android:layout_marginTop="8dp"
+                  android:textColor="@color/textColor"
+                  android:id="@+id/text_one"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_below="@+id/text_one"
+                  android:text="做游戏"
+                  android:layout_marginTop="6dp"
+                  android:textColor="@color/textColor"
+                  android:id="@+id/text_two"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_below="@+id/shangwu"
+                  android:layout_toRightOf="@+id/text_one"
+                  android:text="100分"
+                  android:layout_marginLeft="40dp"
+                  android:layout_marginTop="8dp"
+                  android:textColor="@color/btn_answer_normal"
+                  android:id="@+id/text_three"
+                  android:layout_height="wrap_content"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_below="@+id/text_three"
+                  android:layout_toRightOf="@+id/text_one"
+                  android:text="100分"
+                  android:layout_marginLeft="40dp"
+                  android:layout_marginTop="8dp"
+                  android:textColor="@color/btn_answer_normal"
+                  android:id="@+id/text_four"
+                  android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

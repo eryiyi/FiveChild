@@ -14,6 +14,7 @@
                    android:layout_height="wrap_content"/>
         <ImageView android:layout_width="wrap_content"
                    android:src="@drawable/mine_set"
+                   android:id="@+id/set"
                    android:layout_alignParentRight="true"
                    android:padding="8dp"
                    android:layout_height="wrap_content"/>
@@ -42,12 +43,14 @@
     </RelativeLayout>
 
     <com.lbins.FiveChild.widget.ReboundScrollView android:layout_width="match_parent"
+                                                  android:layout_marginBottom="60dp"
                                                   android:layout_height="match_parent">
         <LinearLayout android:layout_width="match_parent"
                       android:orientation="vertical"
                       android:layout_height="match_parent">
             <TextView android:layout_width="match_parent"
                       android:text="修改密码"
+                      android:id="@+id/text_pwr"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"
@@ -55,6 +58,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="match_parent"
                       android:text="我的学费"
+                      android:id="@+id/text_xuefei"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"
@@ -62,6 +66,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="match_parent"
                       android:text="我的积分"
+                      android:id="@+id/text_jifen"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"
@@ -69,6 +74,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="match_parent"
                       android:text="我的签到"
+                      android:id="@+id/text_qiandao"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"
@@ -76,6 +82,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="match_parent"
                       android:text="我的成绩"
+                      android:id="@+id/text_chengji"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"
@@ -83,6 +90,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="match_parent"
                       android:text="我的表彰"
+                      android:id="@+id/text_biaozhang"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"
@@ -90,6 +98,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="match_parent"
                       android:text="我的视频"
+                      android:id="@+id/text_video"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"
@@ -97,6 +106,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="match_parent"
                       android:text="老师留言"
+                      android:id="@+id/text_liuyan"
                       android:layout_marginTop="1dp"
                       android:background="@color/white"
                       android:textColor="@color/text_color"

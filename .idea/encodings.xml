@@ -25,6 +25,7 @@
     <file url="file://$PROJECT_DIR$/res/values/vpi__defaults.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/UniversityApplication.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/AnimateFirstDisplayListener.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/BiaoZhangAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/ImageGridViewAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/ItemindexAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/ItempersonAdapter.java" charset="UTF-8" />
@@ -33,6 +34,7 @@
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/QuanPhotoAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/SearchNewsAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/TeacherAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/TeacherLiuYanAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/ViewPagerAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/adapter/ZhifuAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/lbins/FiveChild/base/ActivityTack.java" charset="UTF-8" />
