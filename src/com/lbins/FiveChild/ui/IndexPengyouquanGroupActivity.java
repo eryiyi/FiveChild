@@ -39,17 +39,20 @@ public class IndexPengyouquanGroupActivity extends BaseActivity implements View.
         grid_one.setSelector(new ColorDrawable(Color.TRANSPARENT));
         adapterIndex = new ItemindexAdapter(listindex, IndexPengyouquanGroupActivity.this);
         grid_one.setAdapter(adapterIndex);
+
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
 
-    public void back(View view){
-        finish();
-    }
+
 
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.back:
+                finish();
+                break;
         }
     }
 }

@@ -14,18 +14,17 @@ public class IndexPengyouquanShipuActivity extends BaseActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index_mine_banjiquan_shipu_activity);
 
+        this.findViewById(R.id.back).setOnClickListener(this);
 
     }
-
-    public void back(View view){
-        finish();
-    }
-
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.back:
+                finish();
+                break;
         }
     }
 }

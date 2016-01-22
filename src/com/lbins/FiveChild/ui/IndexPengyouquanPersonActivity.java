@@ -36,17 +36,17 @@ public class IndexPengyouquanPersonActivity extends BaseActivity implements View
         lstv = (ListView) this.findViewById(R.id.lstv);
         adapter = new ItempersonAdapter(lists, IndexPengyouquanPersonActivity.this);
         lstv.setAdapter(adapter);
-    }
 
-    public void back(View view){
-        finish();
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
-
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.back:
+                finish();
+                break;
         }
     }
 }

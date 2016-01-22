@@ -43,7 +43,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     private final static int SCANNIN_GREQUEST_CODE = 1;
     private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
     ImageLoader imageLoader = ImageLoader.getInstance();//图片加载类
-    Resources res;
+
     //导航
     private ViewPager viewpager;
     private ViewPagerAdapter adapter;
@@ -53,7 +53,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     private int autoChangeTime = 5000;
 //    private List<SlidePic> lists = new ArrayList<SlidePic>();
     private List<String> lists = new ArrayList<String>();
-
+    Resources res;
     View view;
 
     private GridView grid_one;

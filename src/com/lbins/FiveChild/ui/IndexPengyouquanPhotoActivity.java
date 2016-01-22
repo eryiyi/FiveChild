@@ -33,17 +33,16 @@ public class IndexPengyouquanPhotoActivity extends BaseActivity implements View.
         lstv = (ListView) this.findViewById(R.id.lstv);
         adapter = new QuanPhotoAdapter(lists, IndexPengyouquanPhotoActivity.this);
         lstv.setAdapter(adapter);
+
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
-
-    public void back(View view){
-        finish();
-    }
-
-
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.back:
+                finish();
+                break;
         }
     }
 }

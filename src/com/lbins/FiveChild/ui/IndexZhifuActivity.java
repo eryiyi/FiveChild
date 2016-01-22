@@ -32,10 +32,16 @@ public class IndexZhifuActivity extends BaseActivity implements View.OnClickList
         lists.add("");
         adapter = new ZhifuAdapter(lists, IndexZhifuActivity.this);
         lstv.setAdapter(adapter);
+
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 }

@@ -14,7 +14,7 @@
                   android:drawablePadding="8dp"
                   android:textSize="16sp"
                   android:padding="6dp"
-                  android:onClick="back"
+              android:id="@+id/back"
                   android:drawableLeft="@drawable/back_white"
                   android:textColor="@color/white"
                   android:layout_centerVertical="true"

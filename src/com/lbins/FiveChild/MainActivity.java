@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.base.BaseActivity;
 import com.lbins.FiveChild.fragment.FirstFragment;
+import com.lbins.FiveChild.fragment.FiveFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,7 +36,7 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
     private FirstFragment twoFragment;
     private FirstFragment threeFragment;
     private FirstFragment fourFragment;
-    private FirstFragment fiveFragment;
+    private FiveFragment fiveFragment;
 
     private ImageView foot_one;
     private ImageView foot_two;
@@ -160,7 +161,7 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.foot_five:
                 if (fiveFragment == null) {
-                    fiveFragment = new FirstFragment();
+                    fiveFragment = new FiveFragment();
                     fragmentTransaction.add(R.id.content_frame, fiveFragment);
                 } else {
                     fragmentTransaction.show(fiveFragment);

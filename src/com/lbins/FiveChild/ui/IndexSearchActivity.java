@@ -31,10 +31,16 @@ public class IndexSearchActivity extends BaseActivity implements View.OnClickLis
         lists.add("");
         adapter = new SearchNewsAdapter(lists, IndexSearchActivity.this);
         lstv.setAdapter(adapter);
+
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 }

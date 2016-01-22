@@ -20,10 +20,15 @@ public class IndexJifenActivity extends BaseActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index_mine_jifen_activity);
 
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 }

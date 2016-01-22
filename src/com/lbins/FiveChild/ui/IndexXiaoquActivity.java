@@ -57,12 +57,14 @@ public class IndexXiaoquActivity extends BaseActivity implements View.OnClickLis
     }
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 
-    public void back(View view){
-        finish();
-    }
+
 
     private void initViewPager() {
         adapter = new ViewPagerAdapter(IndexXiaoquActivity.this);

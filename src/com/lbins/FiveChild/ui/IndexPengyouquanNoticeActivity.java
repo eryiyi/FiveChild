@@ -31,10 +31,8 @@ public class IndexPengyouquanNoticeActivity extends BaseActivity implements View
         lists.add("");
         adapter = new QuanNoticeAdapter(lists, IndexPengyouquanNoticeActivity.this);
         lstv.setAdapter(adapter);
-    }
 
-    public void back(View view){
-        finish();
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
 
 
@@ -42,6 +40,9 @@ public class IndexPengyouquanNoticeActivity extends BaseActivity implements View
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.back:
+                finish();
+                break;
         }
     }
 }

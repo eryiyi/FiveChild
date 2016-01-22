@@ -22,6 +22,7 @@ public class IndexPengyouquanActivity extends BaseActivity implements View.OnCli
         this.findViewById(R.id.relate_five).setOnClickListener(this);
         this.findViewById(R.id.relate_six).setOnClickListener(this);
         this.findViewById(R.id.relate_seven).setOnClickListener(this);
+        this.findViewById(R.id.back).setOnClickListener(this);
     }
 
     public void back(View view){
@@ -82,6 +83,9 @@ public class IndexPengyouquanActivity extends BaseActivity implements View.OnCli
                 startActivity(noticeV);
             }
             break;
+            case R.id.back:
+                finish();
+                break;
         }
     }
 }

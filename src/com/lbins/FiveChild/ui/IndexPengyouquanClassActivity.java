@@ -9,23 +9,23 @@ import com.lbins.FiveChild.base.BaseActivity;
  * Created by Administrator on 2016/1/21.
  */
 public class IndexPengyouquanClassActivity extends BaseActivity implements View.OnClickListener {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index_mine_banjiquan_class_activity);
 
+        this.findViewById(R.id.back).setOnClickListener(this);
 
     }
-
-    public void back(View view){
-        finish();
-    }
-
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.back:
+                finish();
+                break;
         }
     }
 }
