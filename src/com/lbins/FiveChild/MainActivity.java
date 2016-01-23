@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.base.BaseActivity;
 import com.lbins.FiveChild.fragment.FirstFragment;
 import com.lbins.FiveChild.fragment.FiveFragment;
+import com.lbins.FiveChild.fragment.FourFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,7 +36,7 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
     private FirstFragment oneFragment;
     private FirstFragment twoFragment;
     private FirstFragment threeFragment;
-    private FirstFragment fourFragment;
+    private FourFragment fourFragment;
     private FiveFragment fiveFragment;
 
     private ImageView foot_one;
@@ -125,11 +126,11 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
                 }
 
                 currentTabIndex = 1;
-//                foot_one.setImageResource(R.drawable.foot_one_red);
-//                foot_two.setImageResource(R.drawable.foot_two_white);
-//                foot_three.setImageResource(R.drawable.foot_three_red);
-//                foot_four.setImageResource(R.drawable.foot_four_red);
-//                foot_five.setImageResource(R.drawable.foot_five_red);
+                foot_one.setImageResource(R.drawable.bottom_icon_one);
+                foot_two.setImageResource(R.drawable.bottom_icon_two_p);
+                foot_three.setImageResource(R.drawable.bottom_icon_three);
+                foot_four.setImageResource(R.drawable.bottom_icon_four);
+                foot_five.setImageResource(R.drawable.bottom_icon_five);
                 break;
             case R.id.foot_three:
                 if (threeFragment == null) {
@@ -147,17 +148,17 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.foot_four:
                 if (fourFragment == null) {
-                    fourFragment = new FirstFragment();
+                    fourFragment = new FourFragment();
                     fragmentTransaction.add(R.id.content_frame, fourFragment);
                 } else {
                     fragmentTransaction.show(fourFragment);
                 }
                 currentTabIndex = 4;
-//                foot_one.setImageResource(R.drawable.foot_one_red);
-//                foot_two.setImageResource(R.drawable.foot_two_red);
-//                foot_three.setImageResource(R.drawable.foot_three_red);
-//                foot_four.setImageResource(R.drawable.foot_four_white);
-//                foot_five.setImageResource(R.drawable.foot_five_red);
+                foot_one.setImageResource(R.drawable.bottom_icon_one);
+                foot_two.setImageResource(R.drawable.bottom_icon_two);
+                foot_three.setImageResource(R.drawable.bottom_icon_three);
+                foot_four.setImageResource(R.drawable.bottom_icon_four_p);
+                foot_five.setImageResource(R.drawable.bottom_icon_five);
                 break;
             case R.id.foot_five:
                 if (fiveFragment == null) {
@@ -167,11 +168,11 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
                     fragmentTransaction.show(fiveFragment);
                 }
                 currentTabIndex = 4;
-//                foot_one.setImageResource(R.drawable.foot_one_red);
-//                foot_two.setImageResource(R.drawable.foot_two_red);
-//                foot_three.setImageResource(R.drawable.foot_three_red);
-//                foot_four.setImageResource(R.drawable.foot_four_red);
-//                foot_five.setImageResource(R.drawable.foot_five_white);
+                foot_one.setImageResource(R.drawable.bottom_icon_one);
+                foot_two.setImageResource(R.drawable.bottom_icon_two);
+                foot_three.setImageResource(R.drawable.bottom_icon_three);
+                foot_four.setImageResource(R.drawable.bottom_icon_four);
+                foot_five.setImageResource(R.drawable.bottom_icon_five_p);
                 break;
 
         }
