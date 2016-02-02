@@ -20,9 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.base.BaseActivity;
-import com.lbins.FiveChild.fragment.FirstFragment;
-import com.lbins.FiveChild.fragment.FiveFragment;
-import com.lbins.FiveChild.fragment.FourFragment;
+import com.lbins.FiveChild.fragment.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,8 +32,8 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
     private FragmentManager fm;
 
     private FirstFragment oneFragment;
-    private FirstFragment twoFragment;
-    private FirstFragment threeFragment;
+    private TwoFragment twoFragment;
+    private ThreeFragment threeFragment;
     private FourFragment fourFragment;
     private FiveFragment fiveFragment;
 
@@ -71,7 +69,7 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
         fm = getSupportFragmentManager();
         initView();
 
-        switchFragment(R.id.foot_one);
+        switchFragment(R.id.relate_one);
 
         getMember();
 
@@ -90,11 +88,13 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
         foot_three = (ImageView) this.findViewById(R.id.foot_three);
         foot_four = (ImageView) this.findViewById(R.id.foot_four);
         foot_five = (ImageView) this.findViewById(R.id.foot_five);
-        foot_one.setOnClickListener(this);
-        foot_two.setOnClickListener(this);
-        foot_three.setOnClickListener(this);
-        foot_four.setOnClickListener(this);
-        foot_five.setOnClickListener(this);
+
+
+        this.findViewById(R.id.relate_one).setOnClickListener(this);
+        this.findViewById(R.id.relate_two).setOnClickListener(this);
+        this.findViewById(R.id.relate_three).setOnClickListener(this);
+        this.findViewById(R.id.relate_four).setOnClickListener(this);
+        this.findViewById(R.id.relate_five).setOnClickListener(this);
     }
 
 
@@ -102,7 +102,7 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
         fragmentTransaction = fm.beginTransaction();
         hideFragments(fragmentTransaction);
         switch (id) {
-            case R.id.foot_one:
+            case R.id.relate_one:
                 if (oneFragment == null) {
                     oneFragment = new FirstFragment();
                     fragmentTransaction.add(R.id.content_frame, oneFragment);
@@ -117,9 +117,9 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
 //                foot_five.setImageResource(R.drawable.foot_five_red);
 
                 break;
-            case R.id.foot_two:
+            case R.id.relate_two:
                 if (twoFragment == null) {
-                    twoFragment = new FirstFragment();
+                    twoFragment = new TwoFragment();
                     fragmentTransaction.add(R.id.content_frame, twoFragment);
                 } else {
                     fragmentTransaction.show(twoFragment);
@@ -132,21 +132,27 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
                 foot_four.setImageResource(R.drawable.bottom_icon_four);
                 foot_five.setImageResource(R.drawable.bottom_icon_five);
                 break;
-            case R.id.foot_three:
+            case R.id.relate_three:
                 if (threeFragment == null) {
-                    threeFragment = new FirstFragment();
+                    threeFragment = new ThreeFragment();
                     fragmentTransaction.add(R.id.content_frame, threeFragment);
                 } else {
                     fragmentTransaction.show(threeFragment);
                 }
                 currentTabIndex = 3;
+                foot_one.setImageResource(R.drawable.bottom_icon_one);
+                foot_two.setImageResource(R.drawable.bottom_icon_two);
+                foot_three.setImageResource(R.drawable.bottom_icon_three_p);
+                foot_four.setImageResource(R.drawable.bottom_icon_four);
+                foot_five.setImageResource(R.drawable.bottom_icon_five);
+
 //                foot_one.setImageResource(R.drawable.foot_one_red);
 //                foot_two.setImageResource(R.drawable.foot_two_red);
 //                foot_three.setImageResource(R.drawable.foot_three_white);
 //                foot_four.setImageResource(R.drawable.foot_four_red);
 //                foot_five.setImageResource(R.drawable.foot_five_red);
                 break;
-            case R.id.foot_four:
+            case R.id.relate_four:
                 if (fourFragment == null) {
                     fourFragment = new FourFragment();
                     fragmentTransaction.add(R.id.content_frame, fourFragment);
@@ -160,7 +166,7 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
                 foot_four.setImageResource(R.drawable.bottom_icon_four_p);
                 foot_five.setImageResource(R.drawable.bottom_icon_five);
                 break;
-            case R.id.foot_five:
+            case R.id.relate_five:
                 if (fiveFragment == null) {
                     fiveFragment = new FiveFragment();
                     fragmentTransaction.add(R.id.content_frame, fiveFragment);

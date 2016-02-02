@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.lbins.FiveChild.R;
+import com.lbins.FiveChild.adapter.ZhanshiAdapter;
 import com.lbins.FiveChild.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -42,6 +44,11 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
     private int bmpW;// ����ͼƬ���
     private View view1,view2;//����ҳ��
 
+    private GridView gridViewOne;
+    private GridView gridViewTwo;
+
+    ZhanshiAdapter adapterOne;
+    List<String> lists = new ArrayList<String>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,6 +98,24 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
         LayoutInflater inflater= getActivity().getLayoutInflater();
         view1=inflater.inflate(R.layout.layout_one, null);
         view2=inflater.inflate(R.layout.layout_two, null);
+        gridViewOne = (GridView) view1.findViewById(R.id.gridView);
+        gridViewTwo = (GridView) view2.findViewById(R.id.gridView);
+
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+        lists.add("");
+
+        adapterOne = new ZhanshiAdapter(lists, getActivity());
+        gridViewOne.setAdapter(adapterOne);
+        gridViewTwo.setAdapter(adapterOne);
 
         views.add(view1);
         views.add(view2);
@@ -218,7 +243,6 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
             animation.setFillAfter(true);// True:ͼƬͣ�ڶ�������λ��
             animation.setDuration(300);
             imageView.startAnimation(animation);
-            Toast.makeText(getActivity(), "22" + viewPager.getCurrentItem() + "11", Toast.LENGTH_SHORT).show();
         }
 
     }

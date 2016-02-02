@@ -99,6 +99,7 @@
         <activity android:name=".ui.MineBiaozhangActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
         <activity android:name=".ui.MineChengjiActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
         <activity android:name=".ui.MinePwrUpdateActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.NewsDetailActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
 
     </application>
 </manifest>

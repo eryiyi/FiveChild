@@ -6,6 +6,7 @@
               android:layout_height="match_parent">
     <GridView android:layout_width="match_parent"
               android:id="@+id/gridView"
+              android:numColumns="3"
               android:layout_height="match_parent">
 
     </GridView>

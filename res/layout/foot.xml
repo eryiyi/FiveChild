@@ -7,6 +7,7 @@
               android:layout_height="wrap_content"
               >
         <RelativeLayout android:layout_width="0dp"
+                        android:id="@+id/relate_one"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
             <ImageView android:layout_width="wrap_content"
@@ -25,6 +26,7 @@
 
 
     <RelativeLayout android:layout_width="0dp"
+                    android:id="@+id/relate_two"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
         <ImageView android:layout_width="wrap_content"
@@ -41,6 +43,7 @@
                   android:layout_height="wrap_content"/>
     </RelativeLayout>
     <RelativeLayout android:layout_width="0dp"
+                    android:id="@+id/relate_three"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
         <ImageView android:layout_width="wrap_content"
@@ -57,6 +60,7 @@
                   android:layout_height="wrap_content"/>
     </RelativeLayout>
     <RelativeLayout android:layout_width="0dp"
+                    android:id="@+id/relate_four"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
         <ImageView android:layout_width="wrap_content"
@@ -73,6 +77,7 @@
                   android:layout_height="wrap_content"/>
     </RelativeLayout>
     <RelativeLayout android:layout_width="0dp"
+                    android:id="@+id/relate_five"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
         <ImageView android:layout_width="wrap_content"
