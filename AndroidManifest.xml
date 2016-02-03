@@ -72,7 +72,7 @@
                  android:theme="@android:style/Theme.NoTitleBar"
                  android:name=".UniversityApplication"
                  android:icon="@drawable/logo">
-        <activity android:name="MainActivity"
+        <activity android:name=".ui.LoginActivity"
                   android:windowSoftInputMode="adjustResize"
                   android:screenOrientation="portrait"
                   android:label="@string/app_name">
@@ -100,6 +100,10 @@
         <activity android:name=".ui.MineChengjiActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
         <activity android:name=".ui.MinePwrUpdateActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
         <activity android:name=".ui.NewsDetailActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.SelectClassActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.RegActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.ForgetPwrActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
 
     </application>
 </manifest>

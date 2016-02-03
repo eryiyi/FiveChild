@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="commetn_isnull">就没啥想说的？</string>
-    <string name="app_name">掌中宝</string>
+    <string name="app_name">掌中宝贝</string>
     <string name="is_quite">确定退出？</string>
     <string name="sure">确定</string>
     <string name="cancel">取消</string>
