@@ -4,11 +4,25 @@ package com.lbins.FiveChild.base;
  * Created by liuzwei on 2015/1/12.
  */
 public class InternetURL {
-    public static final String INTERNAL = "http://yey.xqb668.com/";
+    public static final String INTERNAL = "http://zzb.apptech.space/";
 
     //1 获得秘钥
-    public static final String GET_TOKEN_URL = INTERNAL + "json.php/user.api-authkey";
-    public static final String GET_YS_TOKEN = "https://open.ys7.com/api/method/" + "token/getAccessToken";
+    public static final String GET_TOKEN_URL = INTERNAL + "json/user/auth";
+    //注册--发送验证码
+    public static final String REG_SEND_CODE_URL = INTERNAL + "json/user/sendCode";
+    //注册-校验验证码
+    public static final String REG_VERITY_CODE_URL = INTERNAL + "json/user/verifyCode";
+    //注册
+    public static final String REG__URL = INTERNAL + "json/user/register";
+    //登陆
+    public static final String LOGIN__URL = INTERNAL + "json/user/login";
+    //找回密码
+    public static final String FORGET_PWR__URL = INTERNAL + "json/user/forgetPassword";
+    //个人信息 (memberInfo
+    public static final String MEMBER__URL = INTERNAL + "json/user/memberInfo";
+
+
+
     //2多媒体文件获取
     public static final String UPLOAD_FILE_URL = INTERNAL + "json.php/user.api-uploadfile/";
     //3注册

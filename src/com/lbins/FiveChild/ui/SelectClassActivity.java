@@ -30,6 +30,7 @@ public class SelectClassActivity extends BaseActivity implements View.OnClickLis
             case R.id.daban:
                 Intent reg = new Intent(SelectClassActivity.this, RegActivity.class);
                 startActivity(reg);
+                finish();
                 break;
         }
 

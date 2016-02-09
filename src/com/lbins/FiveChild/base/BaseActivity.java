@@ -1,6 +1,7 @@
 package com.lbins.FiveChild.base;
 
 import android.app.NotificationManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class BaseActivity extends FragmentActivity{
      */
     protected int mScreenWidth;
     protected int mScreenHeight;
-
+    public ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

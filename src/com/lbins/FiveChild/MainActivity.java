@@ -19,8 +19,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.lbins.FiveChild.adapter.AnimateFirstDisplayListener;
 import com.lbins.FiveChild.base.BaseActivity;
+import com.lbins.FiveChild.base.InternetURL;
+import com.lbins.FiveChild.data.MemberObjData;
 import com.lbins.FiveChild.fragment.*;
+import com.lbins.FiveChild.module.MemberObj;
+import com.lbins.FiveChild.util.StringUtil;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,6 +35,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity  extends BaseActivity implements View.OnClickListener{
+
+    ImageLoader imageLoader = ImageLoader.getInstance();//图片加载类
+    private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fm;
 
@@ -203,57 +214,6 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
         }
     }
 
-    void getMember(){
-//        StringRequest request = new StringRequest(
-//                Request.Method.GET,
-//                InternetURL.GET_MEMBER_URL+"?access_token=" + getGson().fromJson(getSp().getString("access_token", ""), String.class),
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String s) {
-//                        if (StringUtil.isJson(s)) {
-//                            try {
-//                                JSONObject jo = new JSONObject(s);
-//                                String code =  jo.getString("code");
-//                                if(Integer.parseInt(code) == 200){
-//                                    MemberObjData data = getGson().fromJson(s, MemberObjData.class);
-//                                    memberObj = data.getData();
-//                                    save("sex", memberObj.getSex());
-//                                    save("user_name", memberObj.getUser_name());
-//                                    save("birthday", memberObj.getBirthday());
-//                                    save("remark", memberObj.getRemark());
-//                                }
-//                                else{
-//                                    Toast.makeText(MainActivity.this, jo.getString("msg"), Toast.LENGTH_SHORT).show();
-//                                }
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError volleyError) {
-//
-//                    }
-//                }
-//        ) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                return params;
-//            }
-//
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("Content-Type", "application/x-www-form-urlencoded");
-//                return params;
-//            }
-//        };
-//        getRequestQueue().add(request);
-    }
 
     //再摁退出程序
 //    @Override
@@ -466,4 +426,80 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
 //        FourFragment.mTabs[FourFragment.index].setSelected(true);
 //        FourFragment.currentTabIndex = FourFragment.index;
 //    }
+
+    MemberObj memberObj;
+    void getMember(){
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.MEMBER__URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code =  jo.getString("code");
+                                if(Integer.parseInt(code) == 200){
+                                    MemberObjData data = getGson().fromJson(s, MemberObjData.class);
+                                    memberObj = data.getData();
+                                    initData();
+                                }
+                                else{
+                                    Toast.makeText(MainActivity.this, jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (progressDialog != null) {
+                            progressDialog.dismiss();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        if (progressDialog != null) {
+                            progressDialog.dismiss();
+                        }
+                        Toast.makeText(MainActivity.this, R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("user", getGson().fromJson(getSp().getString("user", ""), String.class));
+                params.put("access_token", getGson().fromJson(getSp().getString("access_token", ""), String.class));
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+    }
+
+    private void initData() {
+//        imageLoader.displayImage( memberObj.getCover(), mine_head, UniversityApplication.txOptions, animateFirstListener);
+//        nickname.setText(memberObj.getUser_name());
+//        tel.setText("联系电话：" + memberObj.getMobile());
+//        reg_num.setText("注册编号：" + memberObj.getRegister_num());
+//        reg_date.setText("注册日期：" + memberObj.getRegister_date());
+//        jifen.setText("会员积分：" + memberObj.getMember_points());
+//        daijinquan.setText("代金券："+memberObj.getProp());
+//        company_adddress.setText("公司地址："+memberObj.getCompany_address());
+//        company_name.setText("公司名称："+memberObj.getCompany_name());
+//        String lev = memberObj.getM_level()==null?"":memberObj.getM_level();
+//        if(StringUtil.isNullOrEmpty(lev)){
+//            lev = "0.0";
+//        }
+//        star_level.setRating(Float.valueOf(lev));
+
+    }
+
 }
