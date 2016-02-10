@@ -76,7 +76,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startActivity(forgetV);
                 break;
             case R.id.reg:
-                Intent regV = new Intent(LoginActivity.this, SelectClassActivity.class);
+                Intent regV = new Intent(LoginActivity.this, SelectSchoolActivity.class);
                 startActivity(regV);
                 break;
         }

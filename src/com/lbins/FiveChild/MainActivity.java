@@ -485,6 +485,25 @@ public class MainActivity  extends BaseActivity implements View.OnClickListener{
     }
 
     private void initData() {
+        save("id", memberObj.getId());
+        save("nick_name", memberObj.getNick_name());
+        save("user", memberObj.getUser());
+        save("mobile", memberObj.getMobile());
+        save("email", memberObj.getEmail());
+        save("cover", memberObj.getCover());
+        save("rule1_name", memberObj.getRule1_name());
+        save("class_id", memberObj.getClass_id());
+        save("school_id", memberObj.getSchool_id());
+        save("rule2_name", memberObj.getRule2_name());
+        save("f_cover", memberObj.getF_cover());
+        save("m_cover", memberObj.getM_cover());
+        save("sex", memberObj.getSex());
+        save("state", memberObj.getState());
+        save("one", memberObj.getOne());
+        save("birthday", memberObj.getBirthday());
+        save("reg_time", memberObj.getReg_time());
+        save("last_login", memberObj.getLast_login());
+        save("last_ip", memberObj.getLast_ip());
 //        imageLoader.displayImage( memberObj.getCover(), mine_head, UniversityApplication.txOptions, animateFirstListener);
 //        nickname.setText(memberObj.getUser_name());
 //        tel.setText("联系电话：" + memberObj.getMobile());

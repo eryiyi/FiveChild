@@ -10,11 +10,13 @@
                     android:focusableInTouchMode="true"
                     android:background="@drawable/top_bg"
                     android:layout_height="@dimen/height_top_bar">
-        <ImageView android:layout_width="45dp"
+        <com.lbins.FiveChild.widget.CircleImageView
+                  android:layout_width="35dp"
                    android:src="@drawable/head"
+                  android:id="@+id/head"
                    android:layout_centerVertical="true"
                    android:padding="8dp"
-                   android:layout_height="45dp"/>
+                   android:layout_height="35dp"/>
         <ImageView android:layout_width="45dp"
                    android:src="@drawable/duihao"
                    android:padding="8dp"

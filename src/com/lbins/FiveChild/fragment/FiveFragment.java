@@ -6,9 +6,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.lbins.FiveChild.R;
+import com.lbins.FiveChild.UniversityApplication;
+import com.lbins.FiveChild.adapter.AnimateFirstDisplayListener;
 import com.lbins.FiveChild.base.BaseFragment;
+import com.lbins.FiveChild.base.InternetURL;
 import com.lbins.FiveChild.ui.*;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 /**
  * Created by Administrator on 2016/1/22.
@@ -17,11 +24,17 @@ public class FiveFragment extends BaseFragment implements View.OnClickListener {
     Resources res;
     View view;
 
+    private ImageView head;
+    private TextView nickname;
+    private TextView tel;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+    private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+    ImageLoader imageLoader = ImageLoader.getInstance();//图片加载类
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +57,12 @@ public class FiveFragment extends BaseFragment implements View.OnClickListener {
         view.findViewById(R.id.text_liuyan).setOnClickListener(this);
         view.findViewById(R.id.set).setOnClickListener(this);
 
+        head = (ImageView) view.findViewById(R.id.head);
+        nickname = (TextView) view.findViewById(R.id.nickname);
+        tel = (TextView) view.findViewById(R.id.tel);
+        imageLoader.displayImage(InternetURL.INTERNAL+(getGson().fromJson(getSp().getString("cover", ""), String.class)), head, UniversityApplication.txOptions, animateFirstListener);
+        nickname.setText("掌中宝 "+(getGson().fromJson(getSp().getString("nick_name", ""), String.class)));
+        tel.setText(getGson().fromJson(getSp().getString("user", ""), String.class));
     }
     @Override
     public void onClick(View view) {

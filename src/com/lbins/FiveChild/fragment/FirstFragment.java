@@ -19,11 +19,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.R;
+import com.lbins.FiveChild.UniversityApplication;
 import com.lbins.FiveChild.adapter.AnimateFirstDisplayListener;
 import com.lbins.FiveChild.adapter.ItemindexAdapter;
 import com.lbins.FiveChild.adapter.OnClickContentItemListener;
 import com.lbins.FiveChild.adapter.ViewPagerAdapter;
 import com.lbins.FiveChild.base.BaseFragment;
+import com.lbins.FiveChild.base.InternetURL;
 import com.lbins.FiveChild.module.IndexObj;
 import com.lbins.FiveChild.module.SlidePic;
 import com.lbins.FiveChild.ui.*;
@@ -59,6 +61,8 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     private GridView grid_one;
     private ItemindexAdapter adapterIndex;
     List<IndexObj> listindex = new ArrayList<IndexObj>();
+
+    private ImageView head;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -146,6 +150,9 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
                 }
             }
         });
+
+        head = (ImageView) view.findViewById(R.id.head);
+        imageLoader.displayImage(InternetURL.INTERNAL+(getGson().fromJson(getSp().getString("cover", ""), String.class)), head, UniversityApplication.txOptions, animateFirstListener);
     }
 
     @Override

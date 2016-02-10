@@ -36,12 +36,15 @@ public class RegActivity extends BaseActivity implements View.OnClickListener {
     private EditText nickname;
     private Button btn_code;
     private Button btn;
+    private String schoolId;
+    private String classId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reg_activity);
-
+        schoolId = getIntent().getExtras().getString("schoolId");
+        classId = getIntent().getExtras().getString("classId");
         res = getResources();
 
         mobile = (EditText) this.findViewById(R.id.mobile);
@@ -202,6 +205,8 @@ public class RegActivity extends BaseActivity implements View.OnClickListener {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("school_id" , schoolId);
+                params.put("class_id" , classId);
                 params.put("nick_name" , nickname.getText().toString());
                 params.put("user" , mobile.getText().toString());
                 params.put("code" , code.getText().toString());

@@ -18,8 +18,14 @@ public class InternetURL {
     public static final String LOGIN__URL = INTERNAL + "json/user/login";
     //找回密码
     public static final String FORGET_PWR__URL = INTERNAL + "json/user/forgetPassword";
-    //个人信息 (memberInfo
+    //8、个人信息 (memberInfo
     public static final String MEMBER__URL = INTERNAL + "json/user/memberInfo";
+    // 5、 获取 学校 列表 （l l ist
+    public static final String GET_SCHOOL_LISTS__URL = INTERNAL + "json/school/lists";
+    //6 、 搜索 学校 （s s earch
+    public static final String SEARCH_SCHOOL_LISTS__URL = INTERNAL + "json/school/search";
+    // 7、 获取 班级 列表 （l l ists
+    public static final String GET_CLASS_LISTS__URL = INTERNAL + "json/class/lists";
 
 
 

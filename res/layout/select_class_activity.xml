@@ -11,6 +11,8 @@
                     android:layout_height="@dimen/height_top_bar">
         <TextView android:layout_width="wrap_content"
                   android:text="班级选择"
+                  android:id="@+id/back"
+                  android:drawableLeft="@drawable/back_white"
                   android:drawablePadding="8dp"
                   android:textSize="16sp"
                   android:padding="6dp"
@@ -19,53 +21,62 @@
                   android:layout_height="wrap_content"/>
     </RelativeLayout>
 
-    <com.lbins.FiveChild.widget.ReboundScrollView android:layout_width="match_parent"
-                                                  android:layout_height="match_parent">
-        <LinearLayout android:layout_width="match_parent"
-                      android:orientation="vertical"
-                      android:padding="15dp"
-                      android:layout_height="match_parent">
-            <TextView android:layout_width="wrap_content"
-                      android:text="小 小 班"
-                      android:layout_marginTop="25dp"
-                      android:textColor="@color/white"
-                      android:textSize="16sp"
-                      android:id="@+id/xiaoxiaoban"
-                      android:layout_gravity="center"
-                      android:gravity="center"
-                      android:background="@drawable/select_dark_bg"
-                      android:layout_height="wrap_content"/>
-            <TextView android:layout_width="wrap_content"
-                      android:text="小  班"
-                      android:id="@+id/xiaoban"
-                      android:layout_marginTop="25dp"
-                      android:textColor="@color/white"
-                      android:textSize="16sp"
-                      android:layout_gravity="center"
-                      android:gravity="center"
-                      android:background="@drawable/select_green_bg"
-                      android:layout_height="wrap_content"/>
-            <TextView android:layout_width="wrap_content"
-                      android:text="中  班"
-                      android:id="@+id/zhongban"
-                      android:layout_marginTop="25dp"
-                      android:textColor="@color/white"
-                      android:textSize="16sp"
-                      android:layout_gravity="center"
-                      android:gravity="center"
-                      android:background="@drawable/select_dark_bg"
-                      android:layout_height="wrap_content"/>
-            <TextView android:layout_width="wrap_content"
-                      android:text="大  班"
-                      android:id="@+id/daban"
-                      android:layout_marginTop="25dp"
-                      android:textColor="@color/white"
-                      android:textSize="16sp"
-                      android:layout_gravity="center"
-                      android:gravity="center"
-                      android:background="@drawable/select_dark_bg"
-                      android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </com.lbins.FiveChild.widget.ReboundScrollView>
+    <!--<com.lbins.FiveChild.widget.ReboundScrollView android:layout_width="match_parent"-->
+                                                  <!--android:layout_height="match_parent">-->
+        <!--<LinearLayout android:layout_width="match_parent"-->
+                      <!--android:orientation="vertical"-->
+                      <!--android:padding="15dp"-->
+                      <!--android:layout_height="match_parent">-->
+            <!--<TextView android:layout_width="wrap_content"-->
+                      <!--android:text="小 小 班"-->
+                      <!--android:layout_marginTop="25dp"-->
+                      <!--android:textColor="@color/white"-->
+                      <!--android:textSize="16sp"-->
+                      <!--android:id="@+id/xiaoxiaoban"-->
+                      <!--android:layout_gravity="center"-->
+                      <!--android:gravity="center"-->
+                      <!--android:background="@drawable/select_dark_bg"-->
+                      <!--android:layout_height="wrap_content"/>-->
+            <!--<TextView android:layout_width="wrap_content"-->
+                      <!--android:text="小  班"-->
+                      <!--android:id="@+id/xiaoban"-->
+                      <!--android:layout_marginTop="25dp"-->
+                      <!--android:textColor="@color/white"-->
+                      <!--android:textSize="16sp"-->
+                      <!--android:layout_gravity="center"-->
+                      <!--android:gravity="center"-->
+                      <!--android:background="@drawable/select_green_bg"-->
+                      <!--android:layout_height="wrap_content"/>-->
+            <!--<TextView android:layout_width="wrap_content"-->
+                      <!--android:text="中  班"-->
+                      <!--android:id="@+id/zhongban"-->
+                      <!--android:layout_marginTop="25dp"-->
+                      <!--android:textColor="@color/white"-->
+                      <!--android:textSize="16sp"-->
+                      <!--android:layout_gravity="center"-->
+                      <!--android:gravity="center"-->
+                      <!--android:background="@drawable/select_dark_bg"-->
+                      <!--android:layout_height="wrap_content"/>-->
+            <!--<TextView android:layout_width="wrap_content"-->
+                      <!--android:text="大  班"-->
+                      <!--android:id="@+id/daban"-->
+                      <!--android:layout_marginTop="25dp"-->
+                      <!--android:textColor="@color/white"-->
+                      <!--android:textSize="16sp"-->
+                      <!--android:layout_gravity="center"-->
+                      <!--android:gravity="center"-->
+                      <!--android:background="@drawable/select_dark_bg"-->
+                      <!--android:layout_height="wrap_content"/>-->
+        <!--</LinearLayout>-->
+    <!--</com.lbins.FiveChild.widget.ReboundScrollView>-->
+
+    <ListView android:layout_width="match_parent"
+              android:id="@+id/lstv"
+              android:divider="#00d1d1d1"
+              android:scrollingCache="false"
+              android:dividerHeight="1dp"
+              android:fadingEdge="none"
+              android:layout_height="wrap_content">
+    </ListView>
 
 </LinearLayout>

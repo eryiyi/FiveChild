@@ -103,6 +103,7 @@
         <activity android:name=".ui.SelectClassActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
         <activity android:name=".ui.RegActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
         <activity android:name=".ui.ForgetPwrActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.SelectSchoolActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity" android:windowSoftInputMode="adjustResize"  android:screenOrientation="portrait"/>
 
     </application>
