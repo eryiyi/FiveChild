@@ -2,20 +2,21 @@ package com.lbins.FiveChild.module;
 
 /**
  * Created by Administrator on 2015/7/31.
- * 三张图片
- * "id": "5",
- "community_id": "0",
- "pic": "http://yey.xqb668.com//Uploads/2016-01-08/568f676f2fe92.png",
- "href_url": "http://www.baidu.com",
- "title": "百度首页"
+ "id": "2",
+ "image": "/Uploads/2015-12-01/565d4b870ad26.jpg",
+ "url": "www.baidu.com",
+ "is_del": "0",
+ "register_date": "1446714968",
+ "update_date": "0"
  */
 public class SlidePic {
 
     private String id;
-    private String community_id;
-    private String title;
-    private String href_url;
-    private String pic;
+    private String image;
+    private String url;
+    private String is_del;
+    private String register_date;
+    private String update_date;
 
     public String getId() {
         return id;
@@ -25,35 +26,43 @@ public class SlidePic {
         this.id = id;
     }
 
-    public String getCommunity_id() {
-        return community_id;
+    public String getImage() {
+        return image;
     }
 
-    public void setCommunity_id(String community_id) {
-        this.community_id = community_id;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getTitle() {
-        return title;
+    public String getUrl() {
+        return url;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getHref_url() {
-        return href_url;
+    public String getIs_del() {
+        return is_del;
     }
 
-    public void setHref_url(String href_url) {
-        this.href_url = href_url;
+    public void setIs_del(String is_del) {
+        this.is_del = is_del;
     }
 
-    public String getPic() {
-        return pic;
+    public String getRegister_date() {
+        return register_date;
     }
 
-    public void setPic(String pic) {
-        this.pic = pic;
+    public void setRegister_date(String register_date) {
+        this.register_date = register_date;
+    }
+
+    public String getUpdate_date() {
+        return update_date;
+    }
+
+    public void setUpdate_date(String update_date) {
+        this.update_date = update_date;
     }
 }

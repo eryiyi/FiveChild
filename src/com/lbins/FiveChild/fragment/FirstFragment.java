@@ -1,6 +1,7 @@
 package com.lbins.FiveChild.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -26,9 +27,11 @@ import com.lbins.FiveChild.adapter.OnClickContentItemListener;
 import com.lbins.FiveChild.adapter.ViewPagerAdapter;
 import com.lbins.FiveChild.base.BaseFragment;
 import com.lbins.FiveChild.base.InternetURL;
+import com.lbins.FiveChild.data.SlidePicData;
 import com.lbins.FiveChild.module.IndexObj;
 import com.lbins.FiveChild.module.SlidePic;
 import com.lbins.FiveChild.ui.*;
+import com.lbins.FiveChild.util.StringUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import org.json.JSONObject;
@@ -53,8 +56,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     private ImageView dot, dots[];
     private Runnable runnable;
     private int autoChangeTime = 5000;
-//    private List<SlidePic> lists = new ArrayList<SlidePic>();
-    private List<String> lists = new ArrayList<String>();
+    private List<SlidePic> lists = new ArrayList<SlidePic>();
     Resources res;
     View view;
 
@@ -63,7 +65,7 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
     List<IndexObj> listindex = new ArrayList<IndexObj>();
 
     private ImageView head;
-
+    public ProgressDialog progressDialog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,10 +77,6 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         res = getActivity().getResources();
         initView(view);
 
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        initViewPager();
         getAd();
         return view;
     }
@@ -91,6 +89,9 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
         listindex.add(new IndexObj(R.drawable.index_icon_five, "班级圈"));
         listindex.add(new IndexObj(R.drawable.index_icon_six, "费用支付"));
         listindex.add(new IndexObj(R.drawable.index_icon_seven, "我的积分"));
+
+        view.findViewById(R.id.sign).setOnClickListener(this);
+
         grid_one = (GridView) view.findViewById(R.id.grid_one);
         grid_one.setSelector(new ColorDrawable(Color.TRANSPARENT));
         adapterIndex = new ItemindexAdapter(listindex, getActivity());
@@ -157,78 +158,70 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.sign:
+                //签到
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setIndeterminate(true);
+                progressDialog.show();
+                sign();
+                break;
+        }
     }
+
 
     /**
      * 获取首页
      */
     private void getAd() {
-//        StringRequest request = new StringRequest(
-//                Request.Method.GET,
-//                InternetURL.GET_SHOP_INDEX_URL +"?access_token=" + getGson().fromJson(getSp().getString("access_token", ""), String.class),
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String s) {
-//                        if (StringUtil.isJson(s)) {
-//                            try {
-//                                JSONObject jo = new JSONObject(s);
-//                                String code1 =  jo.getString("code");
-//                                if(Integer.parseInt(code1) == 200){
-//                                    IndexData data = getGson().fromJson(s, IndexData.class);
-//                                    IndexObj indexObj = data.getData();
-//                                    if(indexObj != null){
-//                                        if(indexObj.getAds() != null){
-//                                            lists.clear();
-//                                            lists.addAll(indexObj.getAds());
-//                                            initViewPager();
-//                                        }
-//                                        if(indexObj.getNews() != null){
-//                                            listNews.clear();
-//                                            listNews.addAll(indexObj.getNews());
-////                                            adpterNews.notifyDataSetChanged();
-//                                        }
-//                                        if(indexObj.getHot() != null){
-//                                            listHots.clear();
-//                                            listHots.addAll(indexObj.getHot());
-////                                            adpterHot.notifyDataSetChanged();
-//                                        }
-//                                        setGridView();
-//                                    }
-//
-//                                }
-//                            }catch (Exception e){
-//                                e.printStackTrace();
-//                            }
-//                        } else {
-//                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError volleyError) {
-//
-//                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//        ) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("action", "show");
-//                return params;
-//            }
-//
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("Content-Type", "application/x-www-form-urlencoded");
-//                return params;
-//            }
-//        };
-//        getRequestQueue().add(request);
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_AD__URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code1 =  jo.getString("code");
+                                if(Integer.parseInt(code1) == 200){
+                                    SlidePicData data = getGson().fromJson(s, SlidePicData.class);
+                                    lists.clear();
+                                    lists.addAll(data.getData());
+                                    initViewPager();
+                                }else {
+                                    Toast.makeText(getActivity(), jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
     }
 
     private void initViewPager() {
@@ -366,6 +359,61 @@ public class FirstFragment extends BaseFragment implements View.OnClickListener 
 //                startActivity(webView);
                 break;
         }
+    }
+
+
+    private void sign() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_SIGN__URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code1 =  jo.getString("code");
+                                if(Integer.parseInt(code1) == 200){
+                                    Toast.makeText(getActivity(), jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(getActivity(), jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+                        if (progressDialog != null) {
+                            progressDialog.dismiss();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        if (progressDialog != null) {
+                            progressDialog.dismiss();
+                        }
+                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("user", getGson().fromJson(getSp().getString("user", ""), String.class));
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
     }
 
 }

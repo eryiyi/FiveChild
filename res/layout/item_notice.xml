@@ -10,6 +10,7 @@
     <TextView android:layout_width="wrap_content"
               android:text="培养孩子健康心理的9禁忌了，一定不要这么做"
               android:padding="6dp"
+              android:id="@+id/title"
               android:textSize="16sp"
               android:textColor="@color/textColor"
               android:singleLine="true"
@@ -17,6 +18,7 @@
     <TextView android:layout_width="wrap_content"
               android:text="8月19日 14:00"
               android:padding="6dp"
+              android:id="@+id/dateline"
               android:textSize="14sp"
               android:textColor="@color/textColortwo"
               android:singleLine="true"
@@ -25,6 +27,7 @@
               android:text="孩子健康心里的表现：1、求知欲强：这样的孩子兴趣广泛，喜欢观察事物，爱动脑筋什么都想学......"
               android:padding="6dp"
               android:textSize="14sp"
+              android:id="@+id/content"
               android:lineSpacingMultiplier="1.2"
               android:textColor="@color/textColortwo"
               android:layout_height="wrap_content"/>

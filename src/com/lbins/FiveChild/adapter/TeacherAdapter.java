@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.lbins.FiveChild.R;
+import com.lbins.FiveChild.UniversityApplication;
+import com.lbins.FiveChild.module.TeacherObj;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
@@ -19,14 +21,14 @@ import java.util.List;
  */
 public class TeacherAdapter extends BaseAdapter {
     private ViewHolder holder;
-    private List<String> lists;
+    private List<TeacherObj> lists;
     private Context mContect;
     Resources res;
 
     ImageLoader imageLoader = ImageLoader.getInstance();//图片加载类
     private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 
-    public TeacherAdapter(List<String> lists, Context mContect){
+    public TeacherAdapter(List<TeacherObj> lists, Context mContect){
         this.lists = lists;
         this.mContect = mContect;
     }
@@ -51,17 +53,28 @@ public class TeacherAdapter extends BaseAdapter {
         if (convertView == null){
             holder = new ViewHolder();
             convertView = LayoutInflater.from(mContect).inflate(R.layout.item_tearcher,null);
-//            holder.item_title = (TextView) convertView.findViewById(R.id.item_title);
+            holder.tel = (TextView) convertView.findViewById(R.id.tel);
+            holder.title = (TextView) convertView.findViewById(R.id.title);
+            holder.head = (ImageView) convertView.findViewById(R.id.head);
+            holder.type = (TextView) convertView.findViewById(R.id.type);
 
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-      
+        TeacherObj teacherObj = lists.get(position);
+        if (teacherObj != null){
+            holder.title.setText(teacherObj.getName());
+            holder.type.setText(teacherObj.getContent());
+            holder.tel.setText(teacherObj.getTel());
+            imageLoader.displayImage((teacherObj.getCover() == null ? "" : teacherObj.getCover()), holder.head, UniversityApplication.txOptions, animateFirstListener);
+        }
         return convertView;
     }
     class ViewHolder {
-        ImageView item_pic;
-        TextView item_title;
+        ImageView head;
+        TextView title;
+        TextView type;
+        TextView tel;
     }
 }

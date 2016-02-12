@@ -9,16 +9,29 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.R;
 import com.lbins.FiveChild.adapter.AnimateFirstDisplayListener;
 import com.lbins.FiveChild.adapter.OnClickContentItemListener;
 import com.lbins.FiveChild.adapter.ViewPagerAdapter;
 import com.lbins.FiveChild.base.BaseActivity;
+import com.lbins.FiveChild.base.InternetURL;
+import com.lbins.FiveChild.data.SlidePicData;
+import com.lbins.FiveChild.module.SlidePic;
+import com.lbins.FiveChild.util.StringUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/1/21.
@@ -35,21 +48,69 @@ public class IndexXiaoquActivity extends BaseActivity implements View.OnClickLis
     private ImageView dot, dots[];
     private Runnable runnable;
     private int autoChangeTime = 5000;
-    //    private List<SlidePic> lists = new ArrayList<SlidePic>();
-    private List<String> lists = new ArrayList<String>();
+        private List<SlidePic> lists = new ArrayList<SlidePic>();
+//    private List<String> lists = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index_mine_xiaoqu_activity);
         res = getResources();
         initView();
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        initViewPager();
 
+    }
+
+    /**
+     * 获取首页
+     */
+    private void getAd() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_AD__URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code1 =  jo.getString("code");
+                                if(Integer.parseInt(code1) == 200){
+                                    SlidePicData data = getGson().fromJson(s, SlidePicData.class);
+                                    lists.clear();
+                                    lists.addAll(data.getData());
+                                    initViewPager();
+                                }else {
+                                    Toast.makeText(IndexXiaoquActivity.this, jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(IndexXiaoquActivity.this, R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(IndexXiaoquActivity.this, R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
     }
 
     void initView(){

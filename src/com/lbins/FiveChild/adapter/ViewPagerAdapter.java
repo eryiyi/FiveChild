@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.lbins.FiveChild.R;
 import com.lbins.FiveChild.UniversityApplication;
+import com.lbins.FiveChild.base.InternetURL;
 import com.lbins.FiveChild.module.SlidePic;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -24,7 +25,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     ImageLoader imageLoader = ImageLoader.getInstance();//图片加载类
     private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 
-    private List<String> mPaths;
+    private List<SlidePic> mPaths;
     private Context mContext;
 
     public void setOnClickContentItemListener(OnClickContentItemListener onClickContentItemListener) {
@@ -35,7 +36,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         mContext = cx;
     }
 
-    public void change(List<String> paths) {
+    public void change(List<SlidePic> paths) {
         mPaths = paths;
     }
 
@@ -61,7 +62,7 @@ public class ViewPagerAdapter extends PagerAdapter {
                 onClickContentItemListener.onClickContentItem(position, 1, null);
             }
         });
-        String slidePic = mPaths.get(position);
+        SlidePic slidePic = mPaths.get(position);
 
         switch (position){
             case 0:
@@ -74,7 +75,7 @@ public class ViewPagerAdapter extends PagerAdapter {
                 holder.iv.setImageResource(R.drawable.ad3);
                 break;
         }
-//        imageLoader.displayImage((slidePic.getPic() == null ? "" : slidePic.getPic()), holder.iv, UniversityApplication.options, animateFirstListener);
+        imageLoader.displayImage(InternetURL.INTERNAL+(slidePic.getImage() == null ? "" : slidePic.getImage()), holder.iv, UniversityApplication.options, animateFirstListener);
         holder.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

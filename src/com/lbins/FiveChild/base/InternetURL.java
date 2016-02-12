@@ -26,6 +26,14 @@ public class InternetURL {
     public static final String SEARCH_SCHOOL_LISTS__URL = INTERNAL + "json/school/search";
     // 7、 获取 班级 列表 （l l ists
     public static final String GET_CLASS_LISTS__URL = INTERNAL + "json/class/lists";
+    //获取班级 公告
+    public static final String GET_NOTICE__URL = INTERNAL + "json/class/notice";
+    //获取教师列表
+    public static final String GET_TEACHER__URL = INTERNAL + "json/class/teacherList";
+    //首页 、 广告
+    public static final String GET_AD__URL = INTERNAL + "json/index/adv";
+    //3 、签到 (
+    public static final String GET_SIGN__URL = INTERNAL + "json/index/signIn";
 
 
 
