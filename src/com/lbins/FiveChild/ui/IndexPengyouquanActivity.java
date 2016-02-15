@@ -43,7 +43,7 @@ public class IndexPengyouquanActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.relate_two:
             {
-                //班级公告
+                //宝宝动态
                 Intent noticeV = new Intent(IndexPengyouquanActivity.this, IndexPengyouquanNoticeActivity.class);
                 startActivity(noticeV);
             }

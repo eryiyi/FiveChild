@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -16,12 +17,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.R;
+import com.lbins.FiveChild.UniversityApplication;
 import com.lbins.FiveChild.adapter.AnimateFirstDisplayListener;
 import com.lbins.FiveChild.adapter.OnClickContentItemListener;
 import com.lbins.FiveChild.adapter.ViewPagerAdapter;
 import com.lbins.FiveChild.base.BaseActivity;
 import com.lbins.FiveChild.base.InternetURL;
+import com.lbins.FiveChild.data.SchoolObjDataSingle;
 import com.lbins.FiveChild.data.SlidePicData;
+import com.lbins.FiveChild.module.SchoolObj;
 import com.lbins.FiveChild.module.SlidePic;
 import com.lbins.FiveChild.util.StringUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -50,14 +54,105 @@ public class IndexXiaoquActivity extends BaseActivity implements View.OnClickLis
     private int autoChangeTime = 5000;
         private List<SlidePic> lists = new ArrayList<SlidePic>();
 //    private List<String> lists = new ArrayList<String>();
+
+    private ImageView head;
+    private TextView name;
+    private TextView tel;
+    private TextView address;
+    private TextView content;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index_mine_xiaoqu_activity);
         res = getResources();
         initView();
+        getAd();
+        getDetail();
+    }
+
+    void initView(){
+        //
+        head = (ImageView) this.findViewById(R.id.head);
+        name = (TextView) this.findViewById(R.id.name);
+        tel = (TextView) this.findViewById(R.id.tel);
+        address = (TextView) this.findViewById(R.id.address);
+        content = (TextView) this.findViewById(R.id.content);
 
     }
+
+    SchoolObj schoolObj;
+
+    private void getDetail() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_DETAIL_SCHOOL__URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code1 =  jo.getString("code");
+                                if(Integer.parseInt(code1) == 200){
+                                    SchoolObjDataSingle data = getGson().fromJson(s, SchoolObjDataSingle.class);
+                                    schoolObj = data.getData();
+                                    initData();
+                                }else {
+                                    Toast.makeText(IndexXiaoquActivity.this, jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(IndexXiaoquActivity.this, R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(IndexXiaoquActivity.this, R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("school_id", getGson().fromJson(getSp().getString("school_id", ""), String.class));
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+    }
+
+
+    void initData(){
+        //
+        imageLoader.displayImage(InternetURL.INTERNAL+(schoolObj.getCover() == null ? "" : schoolObj.getCover()), head, UniversityApplication.txOptions, animateFirstListener);
+        name.setText(schoolObj.getName());
+        tel.setText(schoolObj.getMobile());
+        address.setText(schoolObj.getAddress());
+        content.setText(schoolObj.getContent());
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.back:
+                finish();
+                break;
+        }
+    }
+
 
     /**
      * 获取首页
@@ -112,20 +207,6 @@ public class IndexXiaoquActivity extends BaseActivity implements View.OnClickLis
         };
         getRequestQueue().add(request);
     }
-
-    void initView(){
-        //
-    }
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.back:
-                finish();
-                break;
-        }
-    }
-
-
 
     private void initViewPager() {
         adapter = new ViewPagerAdapter(IndexXiaoquActivity.this);

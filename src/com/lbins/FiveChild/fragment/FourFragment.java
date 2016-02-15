@@ -16,12 +16,23 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.R;
 import com.lbins.FiveChild.adapter.ZhanshiAdapter;
 import com.lbins.FiveChild.base.BaseFragment;
+import com.lbins.FiveChild.base.InternetURL;
+import com.lbins.FiveChild.data.NewsObjData;
+import com.lbins.FiveChild.util.StringUtil;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/1/23.
@@ -62,9 +73,63 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
         initView();
         InitImageView();
         InitTextView();
-        InitViewPager();
+        getData();
         return view;
     }
+
+    private void getData() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_SHOW_SCHOOL__URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code1 =  jo.getString("code");
+                                if(Integer.parseInt(code1) == 200){
+//                                    NewsObjData data = getGson().fromJson(s, NewsObjData.class);
+//                                    lists.clear();
+//                                    lists.addAll(data.getData());
+//
+                                }else {
+                                    Toast.makeText(getActivity(), jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+                        InitViewPager();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("school_id", getGson().fromJson(getSp().getString("school_id", ""), String.class));
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+    }
+
 
     void initView(){
         //
@@ -100,18 +165,6 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
         view2=inflater.inflate(R.layout.layout_two, null);
         gridViewOne = (GridView) view1.findViewById(R.id.gridView);
         gridViewTwo = (GridView) view2.findViewById(R.id.gridView);
-
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
-        lists.add("");
 
         adapterOne = new ZhanshiAdapter(lists, getActivity());
         gridViewOne.setAdapter(adapterOne);

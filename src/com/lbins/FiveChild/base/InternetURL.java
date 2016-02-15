@@ -34,6 +34,19 @@ public class InternetURL {
     public static final String GET_AD__URL = INTERNAL + "json/index/adv";
     //3 、签到 (
     public static final String GET_SIGN__URL = INTERNAL + "json/index/signIn";
+    //学校详细
+    public static final String GET_DETAIL_SCHOOL__URL = INTERNAL + "json/school/detail";
+    //校园动态
+    public static final String GET_DYNAMIC_SCHOOL__URL = INTERNAL + "json/school/dynamic";
+    //求知展示
+    public static final String GET_SHOW_SCHOOL__URL = INTERNAL + "json/school/show";
+    //校园新闻
+    public static final String GET_NEWS_SCHOOL__URL = INTERNAL + "json/school/news";
+
+
+
+
+
 
 
 

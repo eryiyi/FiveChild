@@ -25,7 +25,7 @@
                    android:layout_height="45dp"/>
         <TextView android:layout_width="wrap_content"
                   android:paddingLeft="8dp"
-                  android:text="展示求知"
+                  android:text="新闻"
                   android:textColor="@color/white"
                   android:textSize="18sp"
                   android:layout_centerInParent="true"

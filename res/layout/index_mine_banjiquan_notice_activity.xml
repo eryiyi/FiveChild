@@ -10,7 +10,7 @@
                     android:background="@drawable/top_bg"
                     android:layout_height="@dimen/height_top_bar">
         <TextView android:layout_width="wrap_content"
-                  android:text="班级公告"
+                  android:text="宝宝动态"
                   android:drawablePadding="8dp"
                   android:textSize="16sp"
                   android:padding="6dp"

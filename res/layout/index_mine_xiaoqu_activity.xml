@@ -67,10 +67,12 @@
                           android:layout_height="wrap_content">
                 <com.lbins.FiveChild.widget.CircleImageView
                         android:layout_width="40dp"
+                        android:id="@+id/head"
                         android:src="@drawable/head"
                         android:layout_height="40dp"/>
                 <TextView android:layout_width="wrap_content"
                           android:text="谢云（院长）"
+                          android:id="@+id/name"
                           android:layout_marginLeft="8dp"
                           android:layout_gravity="center_vertical"
                           android:textColor="@color/textColor"
@@ -79,6 +81,7 @@
             <TextView android:layout_width="match_parent"
                       android:drawableLeft="@drawable/xiaoqu_tel"
                       android:padding="15dp"
+                      android:id="@+id/tel"
                       android:textColor="@color/textColor"
                       android:text="13181038186"
                       android:drawablePadding="8dp"
@@ -93,6 +96,7 @@
                           android:layout_height="wrap_content">
                 <TextView android:layout_width="wrap_content"
                           android:layout_weight="1"
+                          android:id="@+id/address"
                           android:drawableLeft="@drawable/xiaoqu_address"
                           android:padding="15dp"
                           android:textColor="@color/textColor"
@@ -125,6 +129,7 @@
                           android:lineSpacingMultiplier="1.2"
                           android:text="办园目标：把幼儿园办成有亲情的幼儿园\n办院原则：高起点建设、高标准要求\n办院理念：快乐学习、快乐成长、快乐生活\n"
                           android:textSize="12sp"
+                          android:id="@+id/content"
                           android:textColor="@color/textColor"
                           android:gravity="center|left"
                           android:padding="8dp"
