@@ -837,4 +837,7 @@
     <string name="ez_serial_add_hint">设备机身上的9位序列号</string>
     <string name="ez_scan_title_txt">扫描二维码</string>
     <string name="ez_scan_cue_txt">设备二维码</string>
+    <string name="heji">合计：</string>
+    <string name="statue_one">未支付</string>
+    <string name="statue_two">已支付</string>
 </resources>

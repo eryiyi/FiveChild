@@ -8,44 +8,70 @@ public class InternetURL {
 
     //1 获得秘钥
     public static final String GET_TOKEN_URL = INTERNAL + "json/user/auth";
-    //注册--发送验证码
+    //2注册--发送验证码
     public static final String REG_SEND_CODE_URL = INTERNAL + "json/user/sendCode";
-    //注册-校验验证码
+    //2注册-校验验证码
     public static final String REG_VERITY_CODE_URL = INTERNAL + "json/user/verifyCode";
-    //注册
+    //2注册
     public static final String REG__URL = INTERNAL + "json/user/register";
-    //登陆
+    //3.登陆
     public static final String LOGIN__URL = INTERNAL + "json/user/login";
-    //找回密码
+    //4.找回密码
     public static final String FORGET_PWR__URL = INTERNAL + "json/user/forgetPassword";
-    //8、个人信息 (memberInfo
+    //5、个人信息 (memberInfo
     public static final String MEMBER__URL = INTERNAL + "json/user/memberInfo";
-    // 5、 获取 学校 列表 （l l ist
+    //6费用
+    public static final String GET_FEE__URL = INTERNAL + "json/fee/lists";
+
+    //学校
+    // 1.获取 学校 列表 （l l ist
     public static final String GET_SCHOOL_LISTS__URL = INTERNAL + "json/school/lists";
-    //6 、 搜索 学校 （s s earch
-    public static final String SEARCH_SCHOOL_LISTS__URL = INTERNAL + "json/school/search";
-    // 7、 获取 班级 列表 （l l ists
-    public static final String GET_CLASS_LISTS__URL = INTERNAL + "json/class/lists";
-    //获取班级 公告
-    public static final String GET_NOTICE__URL = INTERNAL + "json/class/notice";
-    //获取教师列表
-    public static final String GET_TEACHER__URL = INTERNAL + "json/class/teacherList";
-    //首页 、 广告
-    public static final String GET_AD__URL = INTERNAL + "json/index/adv";
-    //3 、签到 (
-    public static final String GET_SIGN__URL = INTERNAL + "json/index/signIn";
-    //学校详细
+    //2.学校详细
     public static final String GET_DETAIL_SCHOOL__URL = INTERNAL + "json/school/detail";
-    //校园动态
+    //3.搜索 学校 （s s earch
+    public static final String SEARCH_SCHOOL_LISTS__URL = INTERNAL + "json/school/search";
+    //4校园动态
     public static final String GET_DYNAMIC_SCHOOL__URL = INTERNAL + "json/school/dynamic";
-    //求知展示
+    //5.求知展示
     public static final String GET_SHOW_SCHOOL__URL = INTERNAL + "json/school/show";
-    //校园新闻
+    //6.校园新闻
     public static final String GET_NEWS_SCHOOL__URL = INTERNAL + "json/school/news";
+    //7求知
+    public static final String GET_QIUZHI__URL = INTERNAL + "json/show/knowledge";
+    //8.展示
+    public static final String GET_SHOW__URL = INTERNAL + "json/show/show";
+
+    //班级
+    // 1.获取 班级 列表 （l l ists
+    public static final String GET_CLASS_LISTS__URL = INTERNAL + "json/class/lists";
+    //2.获取班级 公告
+    public static final String GET_NOTICE__URL = INTERNAL + "json/class/notice";
+    //3.获取教师列表
+    public static final String GET_TEACHER__URL = INTERNAL + "json/class/teacherList";
+    //4.家长联系
+    public static final String GET_CLASS_CONTACT__URL = INTERNAL + "json/class/contact";
+
+    //学生
+    //成绩
+    public static final String GET_RESULT__URL = INTERNAL + "json/child/result";
+
+    //首页
+    //1.首页.广告
+    public static final String GET_AD__URL = INTERNAL + "json/index/adv";
+    //2.签到 (
+    public static final String GET_SIGN__URL = INTERNAL + "json/index/signIn";
 
 
-
-
+    //通信
+//    1 1 、聊天( ( 环信) )
+//    应用标识(AppKey): wqx888aqct# zhangzhongbao
+//    注册用户名：登陆返回 uid
+//    注册密码：123456
+//            2 2 、 获取用户信息列表( (getAllInfo) )
+//    方式：POST
+//    http://zzb.apptech.space/json/chat/getAllInfo?
+    // 获取用户信息列表( (getAllInfo) )
+    public static final String GET_HUANXIN__URL = "http://zzb.apptech.space/json/chat/getAllInfo";
 
 
 

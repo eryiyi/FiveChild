@@ -22,10 +22,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lbins.FiveChild.R;
+import com.lbins.FiveChild.adapter.ShowiAdapter;
 import com.lbins.FiveChild.adapter.ZhanshiAdapter;
 import com.lbins.FiveChild.base.BaseFragment;
 import com.lbins.FiveChild.base.InternetURL;
 import com.lbins.FiveChild.data.NewsObjData;
+import com.lbins.FiveChild.data.QiuzhiObjData;
+import com.lbins.FiveChild.data.ShowObjData;
+import com.lbins.FiveChild.module.QiuzhiObj;
+import com.lbins.FiveChild.module.ShowObj;
 import com.lbins.FiveChild.util.StringUtil;
 import org.json.JSONObject;
 
@@ -59,7 +64,9 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
     private GridView gridViewTwo;
 
     ZhanshiAdapter adapterOne;
-    List<String> lists = new ArrayList<String>();
+    ShowiAdapter adapterTwo;
+    List<QiuzhiObj> lists = new ArrayList<QiuzhiObj>();
+    List<ShowObj> listsShow = new ArrayList<ShowObj>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,13 +81,14 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
         InitImageView();
         InitTextView();
         getData();
+        getData2();
         return view;
     }
 
     private void getData() {
         StringRequest request = new StringRequest(
-                Request.Method.POST,
-                InternetURL.GET_SHOW_SCHOOL__URL,
+                Request.Method.GET,
+                InternetURL.GET_SHOW__URL+"?school_id=" + (getGson().fromJson(getSp().getString("school_id", ""), String.class)==null?"":getGson().fromJson(getSp().getString("school_id", ""), String.class)),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
@@ -89,9 +97,66 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
                                 JSONObject jo = new JSONObject(s);
                                 String code1 =  jo.getString("code");
                                 if(Integer.parseInt(code1) == 200){
-//                                    NewsObjData data = getGson().fromJson(s, NewsObjData.class);
-//                                    lists.clear();
-//                                    lists.addAll(data.getData());
+                                    ShowObjData data = getGson().fromJson(s, ShowObjData.class);
+                                    listsShow.clear();
+                                    listsShow.addAll(data.getData());
+                                    adapterOne.notifyDataSetChanged();
+                                }else {
+                                    Toast.makeText(getActivity(), jo.getString("msg"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+                        InitViewPager();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+    }
+
+
+
+
+    private void getData2() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_QIUZHI__URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code1 =  jo.getString("code");
+                                if(Integer.parseInt(code1) == 200){
+                                    QiuzhiObjData data = getGson().fromJson(s, QiuzhiObjData.class);
+                                    lists.clear();
+                                    lists.addAll(data.getData());
+                                    adapterTwo.notifyDataSetChanged();
 //
                                 }else {
                                     Toast.makeText(getActivity(), jo.getString("msg"), Toast.LENGTH_SHORT).show();
@@ -116,7 +181,7 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("school_id", getGson().fromJson(getSp().getString("school_id", ""), String.class));
+                params.put("school_id", (getGson().fromJson(getSp().getString("school_id", ""), String.class)==null?"":getGson().fromJson(getSp().getString("school_id", ""), String.class)));
                 return params;
             }
 
@@ -166,9 +231,10 @@ public class FourFragment extends BaseFragment implements View.OnClickListener {
         gridViewOne = (GridView) view1.findViewById(R.id.gridView);
         gridViewTwo = (GridView) view2.findViewById(R.id.gridView);
 
-        adapterOne = new ZhanshiAdapter(lists, getActivity());
+        adapterOne = new ZhanshiAdapter(listsShow, getActivity());
+        adapterTwo = new ShowiAdapter(lists, getActivity());
         gridViewOne.setAdapter(adapterOne);
-        gridViewTwo.setAdapter(adapterOne);
+        gridViewTwo.setAdapter(adapterTwo);
 
         views.add(view1);
         views.add(view2);
